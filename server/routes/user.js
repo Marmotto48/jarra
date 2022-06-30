@@ -14,7 +14,7 @@ const router = express.Router();
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require("multer");
 const cloudinary = require("../middleware/cloudinary");
-const auth = require("../middleware/auth");
+const { auth } = require("../middleware/auth");
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
@@ -36,7 +36,7 @@ router.post("/login", login);
 // @desc Get one user
 // @route GET /user/getuser/:id
 // @access Public route
-router.get("oneuser/:id", getUser);
+router.get("getuser/:id", getUser);
 
 // @desc Get All user
 // @route GET /user/
@@ -46,7 +46,7 @@ router.get("/", getAll);
 // @desc Get All user
 // @route GET /user/
 // @access Public route
-router.get("/sellers", getSellers);
+router.get("/sellers", auth, getSellers);
 
 // @desc Get All user
 // @route GET /user/

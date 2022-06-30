@@ -103,7 +103,11 @@ module.exports = {
       }
       // generate token
       const token = jwt.sign(
-        { id: searchedUser._id, usrename: searchedUser.username },
+        {
+          id: searchedUser._id,
+          username: searchedUser.username,
+          accountType: searchedUser.accountType,
+        },
         process.env.SecretKey
       );
       //LAST LOGIN
@@ -137,7 +141,6 @@ module.exports = {
         lastLogin,
         status,
         bio,
-        followers,
       } = req.body;
       const user = await User.findByIdAndUpdate(
         req.params.id,
@@ -149,7 +152,6 @@ module.exports = {
           lastLogin,
           status,
           bio,
-          followers,
         },
         { new: true }
       );
@@ -184,7 +186,7 @@ module.exports = {
       res.json(sellers);
     } catch (error) {
       console.log(error);
-      res.status(500).json({ msg: "Can not get doctor sellers.", error });
+      res.status(500).json({ msg: "Can not get sellers.", error });
     }
   },
   getBuyers: async (req, res) => {

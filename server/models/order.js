@@ -33,10 +33,6 @@ const orderSchema = new Schema(
         },
       },
     ],
-    orderName: {
-      type: String,
-      required: true,
-    },
     shippingAdress: {
       address: {
         type: String,
@@ -57,6 +53,7 @@ const orderSchema = new Schema(
       paymentMethod: {
         type: String,
         required: true,
+        // default: "On delivery",
       },
       paymentResult: {
         id: { type: String },

@@ -14,6 +14,11 @@ const reviewSchema = new Schema(
       type: String,
       required: true,
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "user",
+    },
   },
   {
     timestamps: true,
@@ -34,8 +39,7 @@ const productSchema = new Schema(
     image: {
       imageURL: {
         type: String,
-        default:
-          "https://res.cloudinary.com/dfkgs6zsr/image/upload/v1636376320/Profile_avatar_placeholder_large_u3gfrg.png",
+        default: "none",
       },
       public_id: {
         type: String,

@@ -15,6 +15,7 @@ app.use(express.json());
 //---------------Routes----------------//
 app.use("/user", require("./routes/user"));
 app.use("/product", require("./routes/product"));
+app.use("/order", require("./routes/order"));
 //error handling
 app.use(errorHandling);
 //not found
